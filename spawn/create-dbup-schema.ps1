@@ -1,3 +1,3 @@
-$TestResult  = $OctopusParameters["Octopus.Action[Spawn new data container].Output.DataContainerConnectionString"]
+$connectionString = $OctopusParameters["Octopus.Action[Spawn new data container].Output.DataContainerConnectionString"]
 
-Write-Output 
+Write-Output $connectionString 
