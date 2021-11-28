@@ -1,4 +1,4 @@
-$containerName = $OctopusParameters["Octopus.Project-Name"] + "-" + $OctopusParameters["Octopus.Environment.Name"] + "-" + $OctopusParameters["Octopus.RunbookRun.Id"]
+$containerName = $OctopusParameters["Octopus.Project.Name"] + "-" + $OctopusParameters["Octopus.Environment.Name"] + "-" + $OctopusParameters["Octopus.RunbookRun.Id"]
 
 Write-output "SPAWN: Creating data-container"
 spawnctl create data-container --image mssql-wideworldimporters --lifetime 1h --name $containerName | out-null
