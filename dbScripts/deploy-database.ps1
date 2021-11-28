@@ -6,9 +6,8 @@ param (
 )
 
 $scriptPath = "$PSScriptRoot/Scripts"
-# $databaseServer = $ConnectionsString # Set in Octopus variables
 
-$databaseServer = "Data Source=kvjk46t9.instances.spawn.cc,30614;database=$databaseName;User ID=sa;Password=PhLZGK9EJ4dWJ2dd"
+$databaseServer = "Data Source=kvjk46t9.instances.spawn.cc,30614;User ID=sa;Password=PhLZGK9EJ4dWJ2dd"
 
 Write-Output "DatabaseServer is: $databaseServer"
 
