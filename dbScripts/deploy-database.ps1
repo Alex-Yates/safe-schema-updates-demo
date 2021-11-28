@@ -7,7 +7,7 @@ param (
 
 $scriptPath = "$PSScriptRoot/Scripts"
 
-$databaseConnectionString = "Data Source=kvjk46t9.instances.spawn.cc,30614;User ID=sa;Password=PhLZGK9EJ4dWJ2dd;database=WideWorldImporters;Connection Timeout=10;"
+$databaseConnectionString = 'Data Source=kvjk46t9.instances.spawn.cc,32182;User ID=sa;Password=BP27cMYWx6XKWHlN;database=WideWorldImporters;Connection Timeout=10;'
 
 Write-Output "DatabaseServer is: $databaseServer"
 
