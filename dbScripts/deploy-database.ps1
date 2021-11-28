@@ -8,13 +8,13 @@ param (
 $scriptPath = "$PSScriptRoot/Scripts"
 $databaseServer = $ConnectionsString # Set in Octopus variables
 
-$databaseServer = "Data Source=kvjk46t9.instances.spawn.cc,30614;User ID=sa;Password=PhLZGK9EJ4dWJ2dd"
+$databaseServer = "Data Source=kvjk46t9.instances.spawn.cc,30614;database=$databaseName;User ID=sa;Password=PhLZGK9EJ4dWJ2dd"
 
 Add-Type -Path 'C:\Program Files\DbUp\dbup-core.dll'
 Add-Type -Path 'C:\Program Files\DbUp\dbup-sqlserver.dll'
 
 $dbUp = [DbUp.DeployChanges]::To
-$dbUp = [SqlServerExtensions]::SqlDatabase($dbUp, "$databaseServer;database=$databaseName;Connection Timeout=10;")
+$dbUp = [SqlServerExtensions]::SqlDatabase($dbUp, "$databaseServer;Connection Timeout=10;")
 $dbUp = [StandardExtensions]::WithScriptsFromFileSystem($dbUp, $scriptPath)
 $dbUp = [SqlServerExtensions]::JournalToSqlTable($dbUp, $dbUpSchema, $dbUpTable)
 $dbUp = [StandardExtensions]::LogToConsole($dbUp)
