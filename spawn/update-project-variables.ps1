@@ -1,11 +1,5 @@
 $connectionString = $OctopusParameters["Octopus.Action[Spawn new data container].Output.DataContainerConnectionString"]
 
-Write-Output "-octopusURL: " + $OctopusParameters["Octopus.Web.ServerUri"] 
-Write-Output "-octopusAPIKey: " + $ApiKey
-Write-Output "-projectName: " + $OctopusParameters["Octopus.Project.Name"] 
-Write-Output "-environment: " + $OctopusParameters["Octopus.Environment.Name"] 
-Write-Output "-varValue: " + $connectionString
-
 function Set-OctopusVariable {
     param(
         $octopusURL = "https://xxx.octopus.app/", # Octopus Server URL
