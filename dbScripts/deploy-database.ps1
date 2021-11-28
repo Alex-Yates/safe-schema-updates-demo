@@ -1,10 +1,11 @@
 param (
 	$databaseName = "WideWorldImporters",
 	$databaseServer =  "",
-	$scriptPath = "",
 	$dbUpSchema = "DbUp",
 	$dbUpTable = "Journal"
 )
+
+$scriptPath = "$PSScriptRoot/Scripts"
 
 Add-Type -Path 'C:\Program Files\DbUp\dbup-core.dll'
 Add-Type -Path 'C:\Program Files\DbUp\dbup-sqlserver.dll'
