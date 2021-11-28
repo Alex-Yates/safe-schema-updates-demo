@@ -6,6 +6,7 @@ param (
 )
 
 $scriptPath = "$PSScriptRoot/Scripts"
+$databaseServer = $ConnectionsString # Set in Octopus variables
 
 Add-Type -Path 'C:\Program Files\DbUp\dbup-core.dll'
 Add-Type -Path 'C:\Program Files\DbUp\dbup-sqlserver.dll'
