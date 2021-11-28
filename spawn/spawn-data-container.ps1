@@ -15,12 +15,12 @@ $saPasswordRow = $info | Where-Object {$_ -like "connectionstring: *"}
 $saPassword = $saPasswordRow -split "password: "
  
 $hostRow = $info | Where-Object {$_ -like "host: *"}
-$host = $hostRow -split "host: "
+$sqlhost = $hostRow -split "host: "
 
 $portRow = $info | Where-Object {$_ -like "port: *"}
 $port = $portRow -split "password: "
 
-$sqlInstance = "$host,$port"
+$sqlInstance = "$sqlhost,$port"
 
 Set-OctopusVariable -name "DataContainerConnectionString" -value $connectionString
 Set-OctopusVariable -name "saPassword" -value $saPassword 
