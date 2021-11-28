@@ -64,4 +64,10 @@ function Set-OctopusVariable {
     Invoke-RestMethod -Method Put -Uri "$octopusURL/api/$($space.Id)/variables/$($project.VariableSetId)" -Headers $header -Body ($projectVariables | ConvertTo-Json -Depth 10) | out-null
 }
 
+Write-Output "-octopusURL: " + $OctopusParameters["Octopus.Web.BaseUrl"] 
+Write-Output "-octopusAPIKey: " + $ApiKey
+Write-Output "-projectName: " + $OctopusParameters["Octopus.Project.Name"] 
+Write-Output "-environment: " + $OctopusParameters["Octopus.Environment.Name"] 
+Write-Output "-varValue: " + $connectionString
+
 Set-OctopusVariable -octopusURL $OctopusParameters["Octopus.Web.BaseUrl"] -octopusAPIKey $ApiKey -projectName $OctopusParameters["Octopus.Project.Name"] -environment $OctopusParameters["Octopus.Environment.Name"] -varName "ConenctionString" -varValue $connectionString
