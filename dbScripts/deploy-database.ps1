@@ -1,21 +1,17 @@
 param (
-	$connectionString = "",
-	$journalSchemaName = "dbup",
-	$journalTableName = "Journal",
-	$databaseName = "WideWorldImporters"
+	$databaseName = "WideWorldImporters",
+	$databaseServer =  "",
+	$scriptPath = "",
+	$dbUpSchema = "DbUp",
+	$dbUpTable = "Journal"
 )
 
-$pathToDbUp = "C:\Program Files\DbUp\DbUpDemo.exe"
 Add-Type -Path 'C:\Program Files\DbUp\dbup-core.dll'
 Add-Type -Path 'C:\Program Files\DbUp\dbup-sqlserver.dll'
-$scriptPath = "$PSScriptRoot\Scripts"
 
-Write-Output "scriptPath: $scriptPath"
-Write-Output "connectionString: $connectionString"
-
-$pathToDbUp = [DbUp.DeployChanges]::To
-$pathToDbUp = [SqlServerExtensions]::SqlDatabase($dbUp, "$connectionString;database=$databaseName;Connection Timeout=120;")   
-$pathToDbUp = [StandardExtensions]::WithScriptsFromFileSystem($dbUp, $scriptPath)
-$pathToDbUp = [SqlServerExtensions]::JournalToSqlTable($pathToDbUp, $journalSchemaName, $journalTableName)
-$pathToDbUp = [StandardExtensions]::LogToConsole($dbUp)
-$upgradeResult = $pathToDbUp.Build().PerformUpgrade()
+$dbUp = [DbUp.DeployChanges]::To
+$dbUp = [SqlServerExtensions]::SqlDatabase($dbUp, "$databaseServer;database=$databaseName;Connection Timeout=10;")
+$dbUp = [StandardExtensions]::WithScriptsFromFileSystem($dbUp, $scriptPath)
+$dbUp = [SqlServerExtensions]::JournalToSqlTable($dbUp, $dbUpSchema, $dbUpTable)
+$dbUp = [StandardExtensions]::LogToConsole($dbUp)
+$upgradeResult = $dbUp.Build().PerformUpgrade()
