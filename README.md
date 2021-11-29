@@ -35,6 +35,7 @@ Create an Octopus Runbook with three Run a Script steps. Each should reference a
 
 Run your runbook in your environment. This should provision you a data container (SQL instance) using Spawn. All Spawn data containers are set to auto-delete after 1 hour to avoid any unexpected bills. You should be able to connect to the instance using SSMS. Check the Runbook logs or Octopus Project Variables for all your connection details.
 
-Set up a deployment process with 2 steps to Run a Script. Run the script from a package, selecting your GitHub feed and this repo. Your steps should execute the following scripts to build out the demo databases:
+Set up a deployment process with 2 steps to Run a Script. Run the script from a package, selecting your GitHub feed and this repo. Your steps should execute the following scripts to build out the demo databases. Note, if using the Octopus Deploy 'Config as Code' feature, you can find OCL scripts for the deployment process in .\octopus:
 1. dbScripts/deploy-facebook.ps1
 2. dbScripts/deploy-toggles.ps1
+(More infor about Config as Code: https://octopus.com/docs/projects/version-control)
