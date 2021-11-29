@@ -13,7 +13,7 @@ $rawConnectionString = $connectionStringRow -split "connectionstring: "
 $WideWorldImportersConnString = $rawConnectionString -replace ("master;","WideWorldImporters;")
 $connectionString = $WideWorldImportersConnString + ";Connection Timeout=10;"
 
-$saPasswordRow = $info | Where-Object {$_ -like "connectionstring: *"}
+$saPasswordRow = $info | Where-Object {$_ -like "password: *"}
 $saPassword = $saPasswordRow -split "password: "
 $saPassword = $saPassword -replace '\s','' # removing spaces
 
