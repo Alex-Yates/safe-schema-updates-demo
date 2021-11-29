@@ -20,7 +20,7 @@ $hostRow = $info | Where-Object {$_ -like "host: *"}
 $sqlhost = $hostRow -split "host: "
 
 $portRow = $info | Where-Object {$_ -like "port: *"}
-$port = $portRow -split "password: "
+$port = $portRow -split "port: "
 
 $sqlInstance = "$sqlhost,$port"
 
