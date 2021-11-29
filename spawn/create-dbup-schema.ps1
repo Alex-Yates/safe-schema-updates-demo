@@ -1,12 +1,7 @@
 $sqlInstance = $OctopusParameters["Octopus.Action[Spawn new data container].Output.sqlInstance"]
 
 $plaintextPassword = $OctopusParameters["Octopus.Action[Spawn new data container].Output.saPassword"]
-
-Write-Output "Plaintext database password is _$plaintextPassword,_"
-Write-Output "Attempting to remove spaces"
 $plaintextPassword = $plaintextPassword -replace '\s','' # removing spaces
-Write-Output "Plaintext database password is _$plaintextPassword,_"
-
 
 $encryptedPassword = $plaintextPassword | ConvertTo-SecureString -AsPlainText -Force
 $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList "sa", $encryptedPassword
