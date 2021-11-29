@@ -15,12 +15,15 @@ $connectionString = $WideWorldImportersConnString + ";Connection Timeout=10;"
 
 $saPasswordRow = $info | Where-Object {$_ -like "connectionstring: *"}
 $saPassword = $saPasswordRow -split "password: "
- 
+$saPassword = $saPassword.trim()
+
 $hostRow = $info | Where-Object {$_ -like "host: *"}
 $sqlhost = $hostRow -split "host: "
+$sqlhost = $sqlhost.trim()
 
 $portRow = $info | Where-Object {$_ -like "port: *"}
 $port = $portRow -split "port: "
+$port = $port.trim()
 
 $sqlInstance = "$sqlhost,$port"
 
