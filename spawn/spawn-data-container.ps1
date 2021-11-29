@@ -10,8 +10,7 @@ Write-output $info
 
 $connectionStringRow = $info | Where-Object {$_ -like "connectionstring: *"}
 $rawConnectionString = $connectionStringRow -split "connectionstring: "
-$WideWorldImportersConnString = $rawConnectionString -replace ("master;","WideWorldImporters;")
-$connectionString = $WideWorldImportersConnString + ";Connection Timeout=10;"
+$connectionString = $rawConnectionString + ";Connection Timeout=10;"
 
 $saPasswordRow = $info | Where-Object {$_ -like "password: *"}
 $saPassword = $saPasswordRow -split "password: "
