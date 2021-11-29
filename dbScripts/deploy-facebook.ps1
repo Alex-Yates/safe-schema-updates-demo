@@ -1,6 +1,6 @@
 # Config
 $scriptPath = "$PSScriptRoot/FacebookScripts"
-$dbConnectionString = $OctopusParameters["FacebookConnString"]
+$dbConnectionString = $FacebookConnString
 $dbUpSchema = "DbUp"
 $dbUpTable = "Journal"
 
