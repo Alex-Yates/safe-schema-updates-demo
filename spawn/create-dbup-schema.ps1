@@ -10,4 +10,6 @@ Write-Output "Importing module dbatools"
 import-module dbatools
 
 Write-Output "Creating DbUp schema"
-invoke-dbaquery -SqlInstance $sqlInstance -Query $query -SqlCredential $cred
+Write-Output "Executing the following command: invoke-dbaquery -SqlInstance $sqlInstance -Query $query"
+$result = invoke-dbaquery -SqlInstance $sqlInstance -Query $query -SqlCredential $cred
+Write-Output $result
