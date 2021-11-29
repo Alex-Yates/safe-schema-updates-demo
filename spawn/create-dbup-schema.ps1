@@ -1,4 +1,4 @@
-$sqlInstance = $OctopusParameters["Octopus.Action[Spawn new data container].Output.server"]
+$sqlInstance = $OctopusParameters["Octopus.Action[Spawn new data container].Output.sqlInstance"]
 
 $plaintextPassword = $OctopusParameters["Octopus.Action[Spawn new data container].Output.saPassword"]
 $encryptedPassword = $plaintextPassword | ConvertTo-SecureString -AsPlainText -Force
