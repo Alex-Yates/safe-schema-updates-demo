@@ -1,5 +1,9 @@
-$dbUpSchema = "DbUp"
-$dbUpTable = "Journal"
+param (
+	$dbUpSchema = "DbUp",
+	$dbUpTable = "Journal",
+	$connectionString = ""
+)
+
 $scriptPath = "$PSScriptRoot/Scripts"
 
 Write-Output "Database scripts directory: $scriptPath"

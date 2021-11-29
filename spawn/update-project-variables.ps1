@@ -1,5 +1,6 @@
 # KNOWN BUG: Fails if variable already exists!
-$connectionString = $OctopusParameters["Octopus.Action[Spawn new data container].Output.DataContainerConnectionString"]
+$FacebookConnString = $OctopusParameters["Octopus.Action[Spawn new data container].Output.FacebookConnString"]
+$TogglesConnString = $OctopusParameters["Octopus.Action[Spawn new data container].Output.TogglesConnString"]
 
 function Set-OctopusVariable {
     param(
@@ -65,4 +66,5 @@ function Set-OctopusVariable {
     Invoke-RestMethod -Method Put -Uri "$octopusURL/api/$($space.Id)/variables/$($project.VariableSetId)" -Headers $header -Body ($projectVariables | ConvertTo-Json -Depth 10) | out-null
 }
 
-Set-OctopusVariable -octopusURL $OctopusParameters["Octopus.Web.ServerUri"] -octopusAPIKey $ApiKey -projectName $OctopusParameters["Octopus.Project.Name"] -environment $OctopusParameters["Octopus.Environment.Name"] -varName "ConnectionString" -varValue $connectionString
+Set-OctopusVariable -octopusURL $OctopusParameters["Octopus.Web.ServerUri"] -octopusAPIKey $ApiKey -projectName $OctopusParameters["Octopus.Project.Name"] -environment $OctopusParameters["Octopus.Environment.Name"] -varName "FacebookConnString" -varValue $FacebookConnString
+Set-OctopusVariable -octopusURL $OctopusParameters["Octopus.Web.ServerUri"] -octopusAPIKey $ApiKey -projectName $OctopusParameters["Octopus.Project.Name"] -environment $OctopusParameters["Octopus.Environment.Name"] -varName "TogglesConnString" -varValue $TogglesConnString
