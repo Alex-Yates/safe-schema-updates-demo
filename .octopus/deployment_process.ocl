@@ -1,0 +1,55 @@
+step "Toggles DB" {
+    properties = {
+        Octopus.Action.TargetRoles = "my_sql_octopus_poc-DbJumpbox"
+    }
+
+    action {
+        action_type = "Octopus.Script"
+        properties = {
+            Octopus.Action.Package.DownloadOnTentacle = "True"
+            Octopus.Action.Package.FeedId = "GitHub"
+            Octopus.Action.Package.PackageId = "Alex-Yates/safe-schema-updates-demo"
+            Octopus.Action.RunOnServer = "false"
+            Octopus.Action.Script.ScriptFileName = "dbScripts/deploy-toggles.ps1"
+            Octopus.Action.Script.ScriptSource = "Package"
+        }
+        worker_pool_variable = ""
+
+        packages {
+            acquisition_location = "ExecutionTarget"
+            feed = "GitHub"
+            package_id = "Alex-Yates/safe-schema-updates-demo"
+            properties = {
+                SelectionMode = "immediate"
+            }
+        }
+    }
+}
+
+step "Facebook DB" {
+    properties = {
+        Octopus.Action.TargetRoles = "my_sql_octopus_poc-DbJumpbox"
+    }
+
+    action {
+        action_type = "Octopus.Script"
+        properties = {
+            Octopus.Action.Package.DownloadOnTentacle = "True"
+            Octopus.Action.Package.FeedId = "GitHub"
+            Octopus.Action.Package.PackageId = "Alex-Yates/safe-schema-updates-demo"
+            Octopus.Action.RunOnServer = "false"
+            Octopus.Action.Script.ScriptFileName = "dbScripts/deploy-facebook.ps1"
+            Octopus.Action.Script.ScriptSource = "Package"
+        }
+        worker_pool_variable = ""
+
+        packages {
+            acquisition_location = "ExecutionTarget"
+            feed = "GitHub"
+            package_id = "Alex-Yates/safe-schema-updates-demo"
+            properties = {
+                SelectionMode = "immediate"
+            }
+        }
+    }
+}
