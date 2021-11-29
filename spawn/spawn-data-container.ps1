@@ -14,19 +14,18 @@ $WideWorldImportersConnString = $rawConnectionString -replace ("master;","WideWo
 $connectionString = $WideWorldImportersConnString + ";Connection Timeout=10;"
 
 $saPasswordRow = $info | Where-Object {$_ -like "connectionstring: *"}
-$saPassword = $saPasswordRow -split "password: "
-$saPassword = $saPassword.trim()
+$saPasswordwithSpaces = $saPasswordRow -split "password: "
+$saPassword = $saPasswordwithSpaces.trim()
 
 $hostRow = $info | Where-Object {$_ -like "host: *"}
-$sqlhost = $hostRow -split "host: "
-$sqlhost = $sqlhost.trim()
+$sqlHostWithSpaces = $hostRow -split "host: "
+$sqlhost = $sqlHostWithSpaces.trim()
 
 $portRow = $info | Where-Object {$_ -like "port: *"}
-$port = $portRow -split "port: "
-$port = $port.trim()
+$portWithSpaces = $portRow -split "port: "
+$port = $portWithSpaces.trim()
 
 $sqlInstance = "$sqlhost,$port"
-$sqlinstance -replace (" ","")
 
 Set-OctopusVariable -name "DataContainerConnectionString" -value $connectionString
 Set-OctopusVariable -name "saPassword" -value $saPassword 
