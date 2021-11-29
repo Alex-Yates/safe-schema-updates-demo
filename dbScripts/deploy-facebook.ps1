@@ -7,10 +7,6 @@ $dbUpTable = "Journal"
 # Just logging
 Write-Output "Database scripts directory: $scriptPath"
 Write-Output "dbConnectionString: $dbConnectionString"
-Write-Output "connectionString: $dbConnectionString"
-Write-Output "FacebookConnString: $FacebookConnString"
-Write-Output "OctopusParameters["FacebookConnString"]: $OctopusParameters["FacebookConnString"]"
-
 
 # You need to download these to the tentacle in advance
 Write-Output "Loading DbUp DLLs"
