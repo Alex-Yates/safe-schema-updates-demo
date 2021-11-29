@@ -1,6 +1,6 @@
 step "Toggles DB" {
     properties = {
-        Octopus.Action.TargetRoles = "my_sql_octopus_poc-DbJumpbox"
+        Octopus.Action.TargetRoles = "sqlJumpbox"
     }
 
     action {
@@ -28,7 +28,7 @@ step "Toggles DB" {
 
 step "Facebook DB" {
     properties = {
-        Octopus.Action.TargetRoles = "my_sql_octopus_poc-DbJumpbox"
+        Octopus.Action.TargetRoles = "sqlJumpbox"
     }
 
     action {
