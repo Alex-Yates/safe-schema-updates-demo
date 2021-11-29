@@ -1,6 +1,6 @@
 # Config
 $scriptPath = "$PSScriptRoot/TogglesScripts"
-$dbConnectionString = $TogglesConnString
+$dbConnectionString = $OctopusParameters["TogglesConnString"]
 $dbUpSchema = "DbUp"
 $dbUpTable = "Journal"
 
