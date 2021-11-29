@@ -1,14 +1,9 @@
-param (
-	$databaseName = "WideWorldImporters",
-	$databaseConnectionString =  "",
-	$dbUpSchema = "DbUp",
-	$dbUpTable = "Journal"
-)
-
+$dbUpSchema = "DbUp"
+$dbUpTable = "Journal"
 $scriptPath = "$PSScriptRoot/Scripts"
 
-Write-Output "Database scripts directory: $databaseConnectionString"
-Write-Output "Database connection string: $databaseConnectionString"
+Write-Output "Database scripts directory: $scriptPath"
+Write-Output "connectionString: $connectionString"
 
 Write-Output "Loading DbUp DLLs"
 
@@ -16,11 +11,11 @@ Write-Output "Loading DbUp DLLs"
 Add-Type -Path 'C:\Program Files\DbUp\dbup-core.dll'       # https://www.nuget.org/packages/dbup-core/
 Add-Type -Path 'C:\Program Files\DbUp\dbup-sqlserver.dll'  # https://www.nuget.org/packages/dbup-sqlserver/
 
-Write-Output "Performing DbUp migration"
-
+Write-Output "Preparing DbUp migration"
 $dbUp = [DbUp.DeployChanges]::To
-$dbUp = [SqlServerExtensions]::SqlDatabase($dbUp, $databaseConnectionString)
+$dbUp = [SqlServerExtensions]::SqlDatabase($dbUp, $connectionString)
 $dbUp = [StandardExtensions]::WithScriptsFromFileSystem($dbUp, $scriptPath)
 $dbUp = [SqlServerExtensions]::JournalToSqlTable($dbUp, $dbUpSchema, $dbUpTable)
 $dbUp = [StandardExtensions]::LogToConsole($dbUp)
+Write-Output "Performing DbUp migration"
 $upgradeResult = $dbUp.Build().PerformUpgrade()
