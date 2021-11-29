@@ -38,4 +38,4 @@ Run your runbook in your environment. This should provision you a data container
 Set up a deployment process with 2 steps to Run a Script. Run the script from a package, selecting your GitHub feed and this repo. Your steps should execute the following scripts to build out the demo databases. Note, if using the Octopus Deploy 'Config as Code' feature, you can find OCL scripts for the deployment process in .\octopus:
 1. dbScripts/deploy-facebook.ps1
 2. dbScripts/deploy-toggles.ps1
-(More infor about Config as Code: https://octopus.com/docs/projects/version-control)
+(More info about Config as Code: https://octopus.com/docs/projects/version-control)
