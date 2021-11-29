@@ -26,6 +26,7 @@ $port = $portRow -split "port: "
 $port = $port.trim()
 
 $sqlInstance = "$sqlhost,$port"
+$sqlinstance -replace (" ","")
 
 Set-OctopusVariable -name "DataContainerConnectionString" -value $connectionString
 Set-OctopusVariable -name "saPassword" -value $saPassword 
