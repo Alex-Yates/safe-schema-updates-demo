@@ -1,3 +1,5 @@
+# KNOWN BUG: Fails if variable already exists!
+
 $connectionString = $OctopusParameters["Octopus.Action[Spawn new data container].Output.DataContainerConnectionString"]
 
 function Set-OctopusVariable {
